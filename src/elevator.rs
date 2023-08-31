@@ -26,7 +26,7 @@ impl Elevator {
                 self.lift.run_timed(duration)?;
                 self.lift.set_duty_cycle_sp(-50)?;
                 Ok(())
-        }
+            }
         }
     }
 }

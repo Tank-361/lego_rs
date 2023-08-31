@@ -19,4 +19,3 @@ fn main() -> Ev3Result<()> {
     drive.move_direction(tank_drive::Direction::Forward, Duration::from_secs(2))?;
     Ok(())
 }
-
