@@ -1,0 +1,7 @@
+*.rs linguist-detectable
+*.sh linguist-detectable
+*.ps1 linguist-detectable
+
+*.yml linguist-vendored
+*.toml linguist-vendored
+*.md linguist-vendored

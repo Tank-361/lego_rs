@@ -1,29 +1,21 @@
 extern crate ev3dev_lang_rust;
-
+use lib::tank_drive;
 use ev3dev_lang_rust::Ev3Result;
 use ev3dev_lang_rust::motors::{LargeMotor, MotorPort};
-use ev3dev_lang_rust::sensors::ColorSensor;
+use ev3dev_lang_rust::sensors::GyroSensor;
+use std::time::Duration;
 
 fn main() -> Ev3Result<()> {
+    let left_motor = LargeMotor::get(MotorPort::OutB)?;
+    let right_motor = LargeMotor::get(MotorPort::OutC)?;
+    let gyro_sensor = GyroSensor::find()?;
 
-    // Get large motor on port outA.
-    let large_motor = LargeMotor::get(MotorPort::OutA)?;
+    let drive: tank_drive::DriveTrain = tank_drive::DriveTrain {
+        right: right_motor,
+        left: left_motor,
+        gyro: gyro_sensor,
+    };
 
-    // Set command "run-direct".
-    large_motor.run_direct()?;
-
-    // Run motor.
-    large_motor.set_duty_cycle_sp(50)?;
-
-    // Find color sensor. Always returns the first recognized one.
-    let color_sensor = ColorSensor::find()?;
-
-    // Switch to rgb mode.
-    color_sensor.set_mode_rgb_raw()?;
-
-    // Get current rgb color tuple.
-    println!("Current rgb color: {:?}", color_sensor.get_rgb()?);
-
+    drive.move_direction(tank_drive::Direction::Forward, Duration::from_secs(2))?;
     Ok(())
 }
-
