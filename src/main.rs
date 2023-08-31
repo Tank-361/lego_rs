@@ -1,5 +1,5 @@
 extern crate ev3dev_lang_rust;
-use ev3_rs::tank_drive;
+use lib::tank_drive;
 use ev3dev_lang_rust::Ev3Result;
 use ev3dev_lang_rust::motors::{LargeMotor, MotorPort};
 use ev3dev_lang_rust::sensors::GyroSensor;

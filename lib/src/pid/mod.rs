@@ -39,6 +39,7 @@ impl PIDConfig {
 pub enum System {
   LargeMotor(LargeMotor),
   MediumMotor(MediumMotor),
+  // TODO add control for subsystems
 }
 
 impl System {}
