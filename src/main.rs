@@ -24,6 +24,6 @@ fn main() -> Ev3Result<()> {
     };
 
     lift.lift(elevator::Direction::Up, Duration::from_secs(2))?;
-
+  
     Ok(())
 }
